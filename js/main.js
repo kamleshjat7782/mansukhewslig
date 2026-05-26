@@ -7,14 +7,15 @@
 /* ══════════════════════════════════════════════
    ⚙️  CONFIGURATION — REPLACE WITH YOUR KEYS
    ══════════════════════════════════════════════ */
+   
 const CFG = {
   emailjs: {
-    publicKey:  'YOUR_EMAILJS_PUBLIC_KEY',   // e.g. 'user_abc123xyz'
-    serviceId:  'YOUR_EMAILJS_SERVICE_ID',   // e.g. 'service_galaxy'
-    templateId: 'YOUR_EMAILJS_TEMPLATE_ID',  // e.g. 'template_apply'
+    publicKey:  'hSd9kTsO_g_LjghYq',   // e.g. 'user_abc123xyz'
+    serviceId:  'service_hih3qqj',   // e.g. 'service_galaxy'
+    templateId: 'template_ri26uyr',  // e.g. 'template_apply'
   },
-  sheetUrl: 'YOUR_GOOGLE_APPS_SCRIPT_URL',   // Deploy as Web App URL
-  adminEmail: 'admin@galaxyewslig.in',
+  sheetUrl: 'https://script.google.com/macros/s/AKfycbwMTwZB7pO_yWXOc8nZmkCKywdqM1qaxe6co5up-DA5eerrYJtjG7EaelsEfjFaxpGLsg/exec',   // Deploy as Web App URL
+  adminEmail: 'mansukhreception@gmail.com',
   waNumber: '919782753728',
 };
 
@@ -239,7 +240,7 @@ function collectData() {
 
 /* ── EmailJS ── */
 async function sendEmail(d) {
-  if (CFG.emailjs.publicKey === 'YOUR_EMAILJS_PUBLIC_KEY') { console.warn('EmailJS not configured'); return; }
+  if (CFG.emailjs.publicKey === 'hSd9kTsO_g_LjghYq') { console.warn('EmailJS not configured'); return; }
   if (typeof emailjs === 'undefined') { console.error('EmailJS SDK not loaded'); return; }
   emailjs.init(CFG.emailjs.publicKey);
   return emailjs.send(CFG.emailjs.serviceId, CFG.emailjs.templateId, {
@@ -255,36 +256,124 @@ async function sendEmail(d) {
   });
 }
 
+
+
+
+
 /* ── Google Sheets ── */
+
 async function sendToSheet(d) {
-  if (CFG.sheetUrl === 'YOUR_GOOGLE_APPS_SCRIPT_URL') { console.warn('Google Sheets not configured'); return; }
-  const fd = new URLSearchParams();
-  Object.entries(d).forEach(([k, v]) => fd.append(k, v));
-  return fetch(CFG.sheetUrl, { method: 'POST', body: fd, mode: 'no-cors' });
+
+  const fd = new FormData();
+
+  Object.keys(d).forEach(key => {
+    fd.append(key, d[key]);
+  });
+
+  try {
+
+    await fetch(CFG.sheetUrl, {
+      method: 'POST',
+      body: fd,
+      mode: 'no-cors'
+    });
+
+    console.log('Saved to Google Sheet');
+
+  } catch(err) {
+
+    console.error(err);
+
+  }
+}
+
+
+/* ── Google Sheets ── */
+
+
+// async function sendToSheet(d) {
+//   if (CFG.sheetUrl === 'https://script.google.com/macros/s/AKfycbwMTwZB7pO_yWXOc8nZmkCKywdqM1qaxe6co5up-DA5eerrYJtjG7EaelsEfjFaxpGLsg/exec') { console.warn('Google Sheets not configured'); return; }
+//   const fd = new URLSearchParams();
+//   Object.entries(d).forEach(([k, v]) => fd.append(k, v));
+//   return fetch(CFG.sheetUrl, { method: 'POST', body: fd, mode: 'no-cors' });
+// }
+
+
+async function submitForm() {
+
+  if (!document.getElementById('terms')?.checked) {
+    Toast.error('Please accept Terms & Conditions');
+    return;
+  }
+
+  const btn = document.getElementById('btnSubmit');
+
+  btn.disabled = true;
+  btn.classList.add('loading');
+
+  const data = collectData();
+
+  try {
+
+    await sendToSheet(data);
+
+    // await sendEmail(data);
+
+    Toast.success('Application Submitted Successfully');
+
+    setTimeout(() => {
+
+      window.location.href =
+      `payment.html?order=${data.orderId}&amount=${data.amount}&name=${encodeURIComponent(data.holderName)}&scheme=${encodeURIComponent(data.applyFor)}`;
+
+    }, 1500);
+
+  } catch(err) {
+
+    console.error(err);
+
+    Toast.error('Submission Failed');
+
+    btn.disabled = false;
+    btn.classList.remove('loading');
+
+  }
 }
 
 /* ── Submit ── */
-async function submitForm() {
-  if (!document.getElementById('terms')?.checked) {
-    Toast.error('Please accept the Terms & Conditions.');
-    return;
-  }
-  const btn = document.getElementById('btnSubmit');
-  btn.classList.add('loading');
-  btn.disabled = true;
+// async function submitForm() {
+//   if (!document.getElementById('terms')?.checked) {
+//     Toast.error('Please accept the Terms & Conditions.');
+//     return;
+//   }
+//   const btn = document.getElementById('btnSubmit');
+//   btn.classList.add('loading');
+//   btn.disabled = true;
 
-  const data = collectData();
-  try {
-    await Promise.allSettled([sendEmail(data), sendToSheet(data)]);
-    sessionStorage.setItem('gx_app', JSON.stringify(data));
-    window.location.href = `payment.html?order=${data.orderId}&amount=${data.amount}&name=${encodeURIComponent(data.holderName)}&scheme=${encodeURIComponent(data.applyFor)}`;
-  } catch (err) {
-    console.error(err);
-    Toast.error('Submission failed. Please try again.');
-    btn.classList.remove('loading');
-    btn.disabled = false;
-  }
-}
+//   const data = collectData();
+//   console.log('data')
+
+//   try {
+//     await Promise.allSettled( sendToSheet(data));
+//     sessionStorage.setItem('gx_app', JSON.stringify(data));
+//     window.location.href = `payment.html?order=${data.orderId}&amount=${data.amount}&name=${encodeURIComponent(data.holderName)}&scheme=${encodeURIComponent(data.applyFor)}`;
+//   } catch (err) {
+//     console.error(err);
+//     Toast.error('Submission failed. Please try again.');
+//     btn.classList.remove('loading');
+//     btn.disabled = false;
+//   }
+  // try {
+  //   await Promise.allSettled([sendEmail(data), sendToSheet(data)]);
+  //   sessionStorage.setItem('gx_app', JSON.stringify(data));
+  //   window.location.href = `payment.html?order=${data.orderId}&amount=${data.amount}&name=${encodeURIComponent(data.holderName)}&scheme=${encodeURIComponent(data.applyFor)}`;
+  // } catch (err) {
+  //   console.error(err);
+  //   Toast.error('Submission failed. Please try again.');
+  //   btn.classList.remove('loading');
+  //   btn.disabled = false;
+  // }
+// }
 
 /* ══════════════════════════════════════════════
    PAYMENT PAGE
