@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply – Mansukh Group</title>
+<link rel="stylesheet" href="css/style.css">
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">
+    <img src="/Images/white logo.png" alt="Mansukh Group Logo" class="nav-logo-img">
+  </a>
+  
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#scheme">Scheme</a>
+    <a href="index.html#fees">Fees</a>
+    <a href="about.html">About</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="apply.html" class="btn btn-gold btn-sm active">Apply Now</a>
+    <button class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <a href="index.html#scheme">Scheme</a>
+  <a href="about.html">About</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <a href="apply.html" class="drawer-cta">Apply Now →</a>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar" style="margin-top:70px;">
+  <a href="index.html">Home</a>
+  <span class="sep">›</span>
+  <span style="color:rgba(255,255,255,.65);">Application Form</span>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar">
+  <div class="prog-step active" id="prog-1"><div class="prog-circle">1</div><div class="prog-label">Personal Info</div></div>
+  <div class="prog-line" id="line-1"></div>
+  <div class="prog-step inactive" id="prog-2"><div class="prog-circle">2</div><div class="prog-label">Address</div></div>
+  <div class="prog-line" id="line-2"></div>
+  <div class="prog-step inactive" id="prog-3"><div class="prog-circle">3</div><div class="prog-label">Income</div></div>
+  <div class="prog-line" id="line-3"></div>
+  <div class="prog-step inactive" id="prog-4"><div class="prog-circle">4</div><div class="prog-label">Review</div></div>
+</div>
+
+<!-- MAIN -->
+<div class="apply-main">
+  <div class="apply-header">
+    <div class="section-tag">Mansukh Group</div>
+    <h1 class="section-title">Application <span>Form</span></h1>
+    <p class="section-sub">Fill all required fields to register for EWS / LIG housing scheme</p>
+  </div>
+
+  <div class="form-card">
+
+    <!-- ── STEP 1: Personal Info ── -->
+    <div class="form-sec" id="sec-1">
+      <div class="form-sec-head">
+        <div class="fsec-num">1</div>
+        <div><div class="fsec-title">Personal Information</div><div class="fsec-sub">Basic details as per official documents</div></div>
+      </div>
+
+      <div class="fg fg-4">
+        <div class="field">
+          <label class="field-lbl">Apply For <span class="req">*</span></label>
+          <select class="field-select" id="applyFor">
+            <option value="">-- Apply For --</option>
+            <option value="EWS">EWS – Economically Weaker Section</option>
+            <option value="LIG">LIG – Low Income Group</option>
+          </select>
+        </div>
+        <div class="field span-2">
+          <label class="field-lbl">Application Holder Name <span class="req">*</span></label>
+          <input type="text" class="field-input" id="holderName" placeholder="Full name as per Aadhar">
+        </div>
+        <div class="field">
+          <label class="field-lbl">Date of Birth <span class="req">*</span></label>
+          <input type="date" class="field-input" id="dob">
+        </div>
+      </div>
+
+      <div class="fg fg-2">
+        <div class="field">
+          <label class="field-lbl">Gender <span class="req">*</span></label>
+          <div class="radio-grp">
+            <label class="radio-pill"><input type="radio" name="gender" value="Male"><span class="rdot"></span>Male</label>
+            <label class="radio-pill"><input type="radio" name="gender" value="Female"><span class="rdot"></span>Female</label>
+            <label class="radio-pill"><input type="radio" name="gender" value="Other"><span class="rdot"></span>Other</label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="field-lbl">Select Relation</label>
+          <div class="radio-grp">
+            <label class="radio-pill"><input type="radio" name="relation" value="Father"><span class="rdot"></span>Father</label>
+            <label class="radio-pill"><input type="radio" name="relation" value="Husband"><span class="rdot"></span>Husband</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="fg fg-3">
+        <div class="field span-2">
+          <label class="field-lbl">Father / Husband Name</label>
+          <input type="text" class="field-input" id="fatherName" placeholder="Father or Husband name">
+        </div>
+        <div class="field">
+          <label class="field-lbl">Mobile Number <span class="req">*</span></label>
+          <input type="tel" class="field-input" id="mobile" placeholder="10-digit mobile" maxlength="10">
+        </div>
+      </div>
+
+      <div class="fg fg-2">
+        <div class="field">
+          <label class="field-lbl">Email Address <span class="req">*</span></label>
+          <input type="email" class="field-input" id="email" placeholder="your@email.com">
+        </div>
+        <div class="field">
+          <label class="field-lbl">ID Proof Type <span class="req">*</span></label>
+          <div class="radio-grp" style="flex-wrap:wrap;">
+            <label class="radio-pill"><input type="radio" name="idType" value="PAN"><span class="rdot"></span>PAN</label>
+            <label class="radio-pill"><input type="radio" name="idType" value="Driving License"><span class="rdot"></span>Driving License</label>
+            <label class="radio-pill"><input type="radio" name="idType" value="Voter ID"><span class="rdot"></span>Voter ID</label>
+            <label class="radio-pill"><input type="radio" name="idType" value="Rashan Card"><span class="rdot"></span>Rashan Card</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="fg fg-2">
+        <div class="field">
+          <label class="field-lbl">ID Number <span class="req">*</span></label>
+          <input type="text" class="field-input" id="idNo" placeholder="Enter ID document number">
+        </div>
+        <div class="field">
+          <label class="field-lbl">Aadhar Number <span class="req">*</span></label>
+          <input type="text" class="field-input" id="aadhar" placeholder="12-digit Aadhar number" maxlength="12">
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 2: Address ── -->
+    <div class="form-sec" id="sec-2">
+      <div class="form-sec-head">
+        <div class="fsec-num">2</div>
+        <div><div class="fsec-title">Address Details</div><div class="fsec-sub">Permanent address as per govt records</div></div>
+      </div>
+      <div class="fg fg-4">
+        <div class="field">
+          <label class="field-lbl">Pin Code <span class="req">*</span></label>
+          <input type="text" class="field-input" id="pincode" placeholder="6-digit pin" maxlength="6">
+        </div>
+        <div class="field span-2">
+          <label class="field-lbl">City <span class="req">*</span></label>
+          <input type="text" class="field-input" id="city" placeholder="Your city name">
+        </div>
+        <div class="field">
+          <label class="field-lbl">State</label>
+          <input type="text" class="field-input field-disabled" id="state" value="Rajasthan" disabled>
+        </div>
+      </div>
+      <div class="fg fg-2">
+        <div class="field">
+          <label class="field-lbl">Country</label>
+          <input type="text" class="field-input field-disabled" id="country" value="India" disabled>
+        </div>
+      </div>
+      <div class="fg fg-1">
+        <div class="field">
+          <label class="field-lbl">Permanent Address <span class="req">*</span></label>
+          <textarea class="field-textarea" id="address" placeholder="House No., Street, Area, Locality, Landmark…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STEP 3: Income ── -->
+    <div class="form-sec" id="sec-3">
+      <div class="form-sec-head">
+        <div class="fsec-num">3</div>
+        <div><div class="fsec-title">Income Details</div><div class="fsec-sub">Financial information for scheme eligibility</div></div>
+      </div>
+      <div class="fg fg-2">
+        <div class="field">
+          <label class="field-lbl">Category / Caste <span class="req">*</span></label>
+          <select class="field-select" id="category">
+            <option value="">-- SELECT Cast --</option>
+            <option>Journalist</option>
+            <option>State Govt Employee (Handicap &amp; Women)</option>
+            <option>State Govt Employee (Un-Reserved)</option>
+            <option>Scheduled Caste</option>
+            <option>Scheduled Tribe</option>
+            <option>Soldier (Handicap)</option>
+            <option>Soldier (Widow &amp; Dependent)</option>
+            <option>Soldier (Other)</option>
+            <option>Trans-Gender</option>
+            <option>Un-Reserved</option>
+            <option>Un-Reserved (Handicap)</option>
+            <option>Un-Reserved Women (Widow and Landless)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-lbl">Annual Income <span class="req">*</span></label>
+          <select class="field-select" id="annualIncome">
+            <option value="">-- SELECT Annual Income --</option>
+            <option value="below_1_lakh">Below ₹1 Lakh</option>
+            <option value="1_to_3_lakh">₹1 Lakh – ₹3 Lakh</option>
+            <option value="3_to_6_lakh">₹3 Lakh – ₹6 Lakh</option>
+            <option value="6_to_10_lakh">₹6 Lakh – ₹10 Lakh</option>
+            <option value="above_10_lakh">Above ₹10 Lakh</option>
+          </select>
+        </div>
+      </div>
+      <div style="margin-top:22px;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:16px 20px;">
+        <p style="font-size:13px;color:var(--muted);line-height:1.7;">
+          <strong style="color:var(--navy);">EWS:</strong> Annual household income up to ₹3 Lakh per annum.&nbsp;&nbsp;
+          <strong style="color:var(--navy);">LIG:</strong> Annual household income ₹3 Lakh – ₹6 Lakh per annum.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── STEP 4: Review ── -->
+    <div class="form-sec" id="sec-4">
+      <div class="form-sec-head">
+        <div class="fsec-num">4</div>
+        <div><div class="fsec-title">Review Your Application</div><div class="fsec-sub">Verify all details before final submission</div></div>
+      </div>
+      <div class="summary-grid" id="summaryGrid"></div>
+      <div style="margin-top:18px;background:rgba(39,174,96,.07);border:1px solid rgba(39,174,96,.2);border-radius:10px;padding:14px 18px;">
+        <p style="font-size:13px;color:var(--muted);">✅ <strong style="color:var(--navy);">Almost done!</strong> Please review all details above. Once submitted, you will be redirected to the payment page.</p>
+      </div>
+    </div>
+
+    <!-- TERMS -->
+    <div class="terms-bar" id="termsBar">
+      <label class="terms-lbl">
+        <input type="checkbox" id="terms">
+        <span class="terms-txt">
+          <strong>Please accept our terms and conditions to proceed.</strong><br>
+          By submitting, I confirm all information is accurate and agree to the
+          <a href="terms.html" target="_blank">Terms &amp; Conditions</a> and
+          <a href="privacy.html" target="_blank">Privacy Policy</a> of Mansukh Group.
+        </span>
+      </label>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="form-foot">
+      <button class="btn-back-f" id="btnBack" onclick="prevStep()">← Back</button>
+      <div class="form-foot-right">
+        <span class="step-ctr" id="stepCtr">Step 1 of 4</span>
+        <button class="btn-next-f" id="btnNext" onclick="nextStep()">Continue →</button>
+        <button class="btn-submit-f" id="btnSubmit" onclick="submitForm()">Submit Application ✓</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><a class="nav-logo" href="index.html"><div class="nav-logo-icon">G</div><div><span class="nav-logo-top">Mansukh</span><span class="nav-logo-bot">Group</span></div></a></div>
+      <p class="footer-desc">Mansukh Group — affordable EWS &amp; LIG housing in Jaipur, Rajasthan.</p>
+      <div class="footer-contact-row">📞 <a href="tel:1234567890">1234567890</a></div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Pages</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Legal</div>
+      <div class="footer-rera">
+        <div class="footer-rera-lbl">RERA Registration</div>
+        <div class="footer-rera-val">RAJ/A/2024/10156</div>
+        <div class="footer-rera-bank">ICICI Bank · A/C: 055005501503<br>IFSC: ICIC0000550</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Mansukh Group. All Rights Reserved.</p>
+    <div class="footer-mansukh"><span>Promoted by</span><strong>MANSUKH GROUP</strong><span>RAJ/A/2024/10156</span></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

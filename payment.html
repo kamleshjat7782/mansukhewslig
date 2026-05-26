@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment – Mansukh Group</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">
+    <img src="/Images/white logo.png" alt="Mansukh Group Logo" class="nav-logo-img">
+  </a>
+  
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="apply.html">Apply</a>
+    <a href="about.html">About</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <a href="apply.html">Apply</a>
+  <a href="about.html">About</a>
+</div>
+
+<!-- STATUS BAR -->
+<div class="status-bar" style="margin-top:70px;">
+  <div class="status-step done">✓ Personal Info</div>
+  <div class="status-arrow">›</div>
+  <div class="status-step done">✓ Address</div>
+  <div class="status-arrow">›</div>
+  <div class="status-step done">✓ Income</div>
+  <div class="status-arrow">›</div>
+  <div class="status-step active">★ Payment</div>
+</div>
+
+<!-- MAIN -->
+<div class="pay-main">
+
+  <div class="pay-header reveal">
+    <div class="pay-badge">✓ Application Received</div>
+    <h1 class="section-title">Complete Your <span>Payment</span></h1>
+    <p class="section-sub" style="margin:8px auto 0;">Scan and pay your payable amount to confirm your application</p>
+  </div>
+
+  <!-- ORDER CARD -->
+  <div class="order-card">
+    <div class="order-hdr">
+      <div>
+        <div class="order-id-lbl">Order ID</div>
+        <div class="order-id-val" id="displayOrderId">GR—</div>
+        <div style="margin-top:5px;font-size:12px;color:rgba(255,255,255,.38);" id="displayScheme">Application</div>
+      </div>
+      <div>
+        <div class="order-amt-lbl">Payable Amount</div>
+        <div class="order-amt-val"><sup>₹</sup><span id="displayAmount">0</span></div>
+      </div>
+    </div>
+    <div class="order-body">
+      <div class="instr-title">Payment Instructions</div>
+      <div class="instr-step">
+        <div class="instr-num">1</div>
+        <div class="instr-body">
+          <strong>Scan &amp; Pay via UPI</strong>
+          <p>Use the QR code below with any UPI app — GPay, PhonePe, Paytm, BHIM or your bank UPI app.</p>
+        </div>
+      </div>
+      <div class="instr-step">
+        <div class="instr-num">2</div>
+        <div class="instr-body">
+          <strong>Share Screenshot on WhatsApp</strong>
+          <p>Once payment is done, share your screenshot to <a href="https://wa.me/919782753728" target="_blank">+91 9782753728</a>. Click to open WhatsApp directly.</p>
+        </div>
+      </div>
+      <div class="instr-step">
+        <div class="instr-num">3</div>
+        <div class="instr-body">
+          <strong>Prepare a Demand Draft (DD)</strong>
+          <p>Prepare a DD in favour of <strong>"Mansukh Group "</strong> and deposit at our office.</p>
+        </div>
+      </div>
+
+      <!-- BANK -->
+      <div class="bank-box">
+        <div class="bank-icon">🏦</div>
+        <div class="bank-info">
+          <div class="bank-info-lbl">Bank Details for Reference</div>
+          <div class="bank-fields">
+            <div><div class="bank-fld-lbl">Bank</div><div class="bank-fld-val">ICICI Bank</div></div>
+            <div><div class="bank-fld-lbl">A/C Number</div><div class="bank-fld-val">055005501503</div></div>
+            <div><div class="bank-fld-lbl">IFSC Code</div><div class="bank-fld-val">ICIC0000550</div></div>
+          </div>
+        </div>
+        <button class="btn-copy" id="btnCopyBank">Copy Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR CARD -->
+  <div class="qr-card">
+    <div class="qr-card-hdr">
+      <div class="qr-card-hdr-icon">📱</div>
+      <div><h3>Scan &amp; Pay with any UPI App</h3><p>Point your camera at the QR code below</p></div>
+    </div>
+    <div class="qr-body">
+      <div class="qr-box">
+        <div class="qr-box-inner">
+          <img src="/Images/QRCode.png" alt="QRCode">
+          <!-- <div class="qrc tl"></div>
+          <div class="qrc tr"></div>
+          <div class="qrc bl"></div>
+          <div class="qr-dots"></div>
+          <div class="qr-logo">G</div> -->
+        </div>
+      </div>
+      <div class="qr-merchant">Mansukh Group </div>
+      <div class="qr-upi">UPI ID: MansukhGroup@icici</div>
+      <div class="qr-apps">
+        <div class="qr-app">📱 GPay</div>
+        <div class="qr-app">📱 PhonePe</div>
+        <div class="qr-app">📱 Paytm</div>
+        <div class="qr-app">📱 BHIM</div>
+        <div class="qr-app">🏦 Any UPI</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP -->
+  <div class="wa-card">
+    <div class="wa-icon">💬</div>
+    <div class="wa-content">
+      <h3>Share Payment Screenshot</h3>
+      <p>After completing payment, send your screenshot on WhatsApp. We'll process your application within 24 hours.</p>
+    </div>
+    <a href="#" class="btn-wa" id="waLink" target="_blank">Open WhatsApp →</a>
+  </div>
+
+  <!-- CONFIRM -->
+  <div class="confirm-sec">
+    <button class="btn btn-gold btn-lg" id="btnConfirm">I've Completed Payment ✓</button>
+    <p>Click after you've sent the screenshot on WhatsApp</p>
+  </div>
+
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <div class="modal-icon">🎉</div>
+    <h2>Application Submitted!</h2>
+    <div class="modal-order" id="modalOrderId">GR—</div>
+    <p>Thank you, <strong id="modalName"></strong>! Your application has been received. Our team will contact you within 24–48 hours after verifying your payment.</p>
+    <a href="index.html" class="btn btn-gold">Back to Home</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div>
+      <div class="footer-logo"><a class="nav-logo" href="index.html"><div class="nav-logo-icon">G</div><div><span class="nav-logo-top">Mansukh</span><span class="nav-logo-bot">Group</span></div></a></div>
+      <p class="footer-desc">Mansukh Group — affordable EWS &amp; LIG housing in Jaipur, Rajasthan.</p>
+      <div class="footer-contact-row">📞 <a href="tel:1234567890">1234567890</a></div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Pages</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="apply.html">Apply</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Legal</div>
+      <div class="footer-rera">
+        <div class="footer-rera-lbl">RERA Registration</div>
+        <div class="footer-rera-val">RAJ/A/2024/10156</div>
+        <div class="footer-rera-bank">ICICI Bank · A/C: 055005501503<br>IFSC: ICIC0000550</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Mansukh Group. All Rights Reserved.</p>
+    <div class="footer-mansukh"><span>Promoted by</span><strong>MANSUKH GROUP</strong><span>RAJ/A/2024/10156</span></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
