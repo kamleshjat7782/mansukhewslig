@@ -92,6 +92,7 @@ input,select,textarea { font-family:'DM Sans',sans-serif; }
 .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
 
 /* ── NAVBAR ── */
+/* ── NAVBAR ── */
 .navbar {
   position:fixed; top:0; left:0; right:0; z-index:999;
   height:var(--nav-h);
@@ -174,22 +175,8 @@ input,select,textarea { font-family:'DM Sans',sans-serif; }
     display: none; /* Hide links on smaller screens */
   }
 
-  .nav-hamburger {
-    display: block; /* Show hamburger menu */
-  }
+  
 
-  .nav-drawer {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
-    padding: 16px;
-    box-shadow: var(--shadow);
-  }
 }
 
 /* ── FOOTER ── */

@@ -78,19 +78,19 @@ document.addEventListener('click', e => {
 /* ══════════════════════════════════════════════
    NAV — hamburger
    ══════════════════════════════════════════════ */
-function initNav() {
-  const btn = document.getElementById('navHamburger');
-  const drawer = document.getElementById('navDrawer');
-  if (!btn || !drawer) return;
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('open');
-    drawer.classList.toggle('open');
-  });
-  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    btn.classList.remove('open');
-    drawer.classList.remove('open');
-  }));
-}
+   function initNav() {
+    const btn = document.getElementById('navHamburger');
+    const drawer = document.getElementById('navDrawer');
+    if (!btn || !drawer) return;
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      drawer.classList.remove('open');
+    }));
+  }
 
 /* ══════════════════════════════════════════════
    RADIO PILLS
