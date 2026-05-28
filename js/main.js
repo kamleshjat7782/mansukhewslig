@@ -306,13 +306,15 @@ async function sendToSheet(d) {
 
 async function submitForm() {
 
-
+  // Check UTR No.
   const utrNo = document.getElementById('utrNo').value.trim();
-if (!utrNo) {
+
+  if (!utrNo) {
     Toast.error('Please enter Payment ID (UTR No.)');
     return;
-}
+  }
 
+  // Check Terms
   if (!document.getElementById('terms')?.checked) {
     Toast.error('Please accept Terms & Conditions');
     return;
@@ -324,20 +326,19 @@ if (!utrNo) {
   btn.classList.add('loading');
 
   const data = collectData();
-  
+
   try {
 
     await sendToSheet(data);
 
-    // await sendEmail(data);
-
     Toast.success('Application Submitted Successfully');
 
-    setTimeout(() => {
+    // Update Modal Data
+    document.getElementById('modalOrderId').textContent = data.orderId;
+    document.getElementById('modalName').textContent = data.holderName;
 
-     
-
-    }, 1500);
+    // Open Modal
+    document.getElementById('successModal').classList.add('open');
 
   } catch(err) {
 
@@ -347,9 +348,56 @@ if (!utrNo) {
 
     btn.disabled = false;
     btn.classList.remove('loading');
-
   }
 }
+
+
+// async function submitForm() {
+
+
+//   const utrNo = document.getElementById('utrNo').value.trim();
+// if (!utrNo) {
+//     Toast.error('Please enter Payment ID (UTR No.)');
+//     return;
+// }
+
+//   if (!document.getElementById('terms')?.checked) {
+//     Toast.error('Please accept Terms & Conditions');
+//     return;
+//   }
+
+//   const btn = document.getElementById('btnSubmit');
+
+//   btn.disabled = true;
+//   btn.classList.add('loading');
+
+//   const data = collectData();
+  
+//   try {
+
+//     await sendToSheet(data);
+
+//     await sendEmail(data);
+
+//     Toast.success('Application Submitted Successfully');
+
+//     setTimeout(() => {
+
+     
+
+//     }, 1500);
+
+//   } catch(err) {
+
+//     console.error(err);
+
+//     Toast.error('Submission Failed');
+
+//     btn.disabled = false;
+//     btn.classList.remove('loading');
+
+//   }
+// }
 
 /* ── Submit ── */
 // async function submitForm() {
@@ -437,17 +485,17 @@ function initPayment() {
   }
 
   // Confirm button
-  const confirmBtn = document.getElementById('confirmBtn');
-  if (confirmBtn) {
-    confirmBtn.addEventListener('click', () => {
-      const oid2 = document.getElementById('modalOrderId');
-      const nm = document.getElementById('modalName');
-      if (oid2) oid2.textContent = orderId;
-      if (nm) nm.textContent = name;
-      const modal = document.getElementById('successModal');
-      if (modal) modal.classList.add('open');
-    });
-  }
+  // const confirmBtn = document.getElementById('btnSubmit');
+  // if (confirmBtn) {
+  //   confirmBtn.addEventListener('click', () => {
+  //     const oid2 = document.getElementById('modalOrderId');
+  //     const nm = document.getElementById('modalName');
+  //     if (oid2) oid2.textContent = orderId;
+  //     if (nm) nm.textContent = name;
+  //     const modal = document.getElementById('successModal');
+  //     if (modal) modal.classList.add('open');
+  //   });
+  // }
 
   // Close modal on overlay click
   document.addEventListener('click', e => {
