@@ -437,7 +437,7 @@ function initPayment() {
   }
 
   // Confirm button
-  const confirmBtn = document.getElementById('btnSubmit');
+  const confirmBtn = document.getElementById('confirmBtn');
   if (confirmBtn) {
     confirmBtn.addEventListener('click', () => {
       const oid2 = document.getElementById('modalOrderId');
