@@ -52,8 +52,8 @@
   <div class="prog-step inactive" id="prog-3"><div class="prog-circle">3</div><div class="prog-label">Income</div></div>
   <div class="prog-line" id="line-3"></div>
   <div class="prog-step inactive" id="prog-4"><div class="prog-circle">4</div><div class="prog-label">Review</div></div>
-  <!-- <div class="prog-line" id="line-4"></div> -->
-  <!-- <div class="prog-step inactive" id="prog-5"><div class="prog-circle">5</div><div class="prog-label">Payment</div></div> -->
+  <div class="prog-line" id="line-4"></div>
+  <div class="prog-step inactive" id="prog-5"><div class="prog-circle">5</div><div class="prog-label">Payment</div></div>
 </div>
 
 <!-- MAIN -->
@@ -194,17 +194,11 @@
           <label class="field-lbl">Category / Caste <span class="req">*</span></label>
           <select class="field-select" id="category">
             <option value="">-- SELECT Cast --</option>
-            <option>Journalist</option>
-            <option>State Govt Employee (Handicap &amp; Women)</option>
             <option>State Govt Employee (Un-Reserved)</option>
             <option>Scheduled Caste</option>
             <option>Scheduled Tribe</option>
-            <option>Soldier (Handicap)</option>
-            <option>Soldier (Widow &amp; Dependent)</option>
             <option>Soldier (Other)</option>
-            <option>Trans-Gender</option>
             <option>Un-Reserved</option>
-            <option>Un-Reserved (Handicap)</option>
             <option>Un-Reserved Women (Widow and Landless)</option>
           </select>
         </div>
@@ -242,7 +236,106 @@
 
     <!-- ── STEP 5: Payment ── -->
 
-    
+    <div class="form-sec" id="sec-5">
+      <div class="form-sec-head">
+        <div class="fsec-num">5</div>
+        <div><div class="fsec-title">Complete Your Payment</div><div class="fsec-sub">Scan and pay your payable amount to confirm your application</div></div>
+      </div>
+
+
+      
+      <div class="pay-main">
+      
+        <!-- ORDER CARD -->
+        <div class="order-card">
+          <div class="order-hdr">
+            <div>
+              <div class="order-id-lbl">Order ID</div>
+              <div class="order-id-val" id="displayOrderId">GR—</div>
+              <div style="margin-top:5px;font-size:19px;color:rgb(255, 255, 255);" id="displayScheme">Application</div>
+            </div>
+            <div>
+              <div class="order-amt-lbl">Payable Amount</div>
+              <div class="order-amt-val"><span id="displayAmount">0</span></div>
+            </div>
+          </div>
+          <div class="order-body">
+            <div class="instr-title">Payment Instructions</div>
+            <div class="instr-step">
+              <div class="instr-num">1</div>
+              <div class="instr-body">
+                <strong>Scan &amp; Pay via UPI</strong>
+                <p>Use the QR code below with any UPI app — GPay, PhonePe, Paytm, BHIM or your bank UPI app.</p>
+              </div>
+            </div>
+            <div class="instr-step">
+              <div class="instr-num">2</div>
+              <div class="instr-body">
+                <strong>Share Screenshot on WhatsApp</strong>
+                <p>Once payment is done, share your screenshot to <a href="https://wa.me/919782753728" target="_blank">+91 9782753728</a>. Click to open WhatsApp directly.</p>
+              </div>
+            </div>
+      
+            
+            
+          </div>
+        </div>
+      
+        <!-- QR CARD -->
+        <div class="qr-card">
+          <div class="qr-card-hdr">
+            <div class="qr-card-hdr-icon">📱</div>
+            <div><h3>Scan &amp; Pay with any UPI App</h3><p>Point your camera at the QR code below</p></div>
+          </div>
+          <div class="qr-body">
+            <div class="qr-box">
+              <div class="qr-box-inner">
+                <img src="/Images/QRCode.png" alt="QRCode">
+                <!-- <div class="qrc tl"></div>
+                <div class="qrc tr"></div>
+                <div class="qrc bl"></div>
+                <div class="qr-dots"></div>
+                <div class="qr-logo">G</div> -->
+              </div>
+            </div>
+            <div class="qr-merchant">Mansukh Group </div>
+            <div class="qr-apps">
+              <div class="qr-app">📱 GPay</div>
+              <div class="qr-app">📱 PhonePe</div>
+              <div class="qr-app">📱 Paytm</div>
+              <div class="qr-app">📱 BHIM</div>
+              <div class="qr-app">🏦 Any UPI</div>
+            </div>
+          </div>
+        </div>
+
+       
+      
+        <!-- WHATSAPP -->
+        <div class="wa-card">
+          <div class="wa-icon">💬</div>
+          <div class="wa-content">
+            <h3>Share Payment Screenshot</h3>
+            <p>After completing payment, send your screenshot on WhatsApp. We'll process your application within 24 hours.</p>
+          </div>
+          <a href="#" class="btn-wa" id="waLink" target="_blank">Open WhatsApp →</a>
+        </div>
+      
+        <!-- Payment Confrom  -->
+
+        <div class="field" style="padding: 10px;">
+          <label class="field-lbl">Payment ID (Reference no.) <span class="req">*</span></label>
+          <input type="text" class="field-input" id="utrNo" placeholder="payment Reference no." maxlength="10" >
+        </div>
+       
+      
+      </div>
+
+
+
+
+
+    </div>
 
 
    <!-- 5 -->
@@ -270,6 +363,17 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <div class="modal-icon">🎉</div>
+    <h2>Application Submitted!</h2>
+    <div class="modal-order" id="modalOrderId">GR—</div>
+    <p>Thank you, <strong id="modalName"></strong>! Your application has been received. Our team will contact you within 24–48 hours after verifying your payment.</p>
+    <a href="index.html" class="btn btn-gold">Back to Home</a>
   </div>
 </div>
 

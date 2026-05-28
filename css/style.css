@@ -218,7 +218,7 @@ input,select,textarea { font-family:'DM Sans',sans-serif; }
 .breadcrumb-bar .sep { color:rgba(255,255,255,0.2); }
 
 /* ── TOAST ── */
-.toast { position:fixed; bottom:28px; right:28px; background:var(--navy-deep); color:white; padding:14px 22px; border-radius:var(--radius); box-shadow:var(--shadow-lg); font-size:14px; font-weight:500; display:flex; align-items:center; gap:10px; z-index:9999; transform:translateY(80px); opacity:0; transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275); border-left:4px solid var(--gold); max-width:340px; }
+.toast { position:fixed; bottom:28px; right: 50%; background:var(--navy-deep); color:white; padding:14px 22px; border-radius:var(--radius); box-shadow:var(--shadow-lg); font-size:14px; font-weight:500; display:flex; align-items:center; gap:10px; z-index:9999; transform:translateY(80px); opacity:0; transition:all .4s cubic-bezier(0.175,0.885,0.32,1.275); border-left:4px solid var(--gold); max-width:340px; }
 .toast.show { transform:translateY(0); opacity:1; }
 .toast.t-success { border-left-color:var(--success); }
 .toast.t-error { border-left-color:var(--error); }

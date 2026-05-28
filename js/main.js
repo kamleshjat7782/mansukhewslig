@@ -112,7 +112,7 @@ function initRadioPills() {
    MULTI-STEP FORM
    ══════════════════════════════════════════════ */
 let curStep = 1;
-const TOTAL = 4;
+const TOTAL = 5;
 
 const REQUIRED = {
   1: ['applyFor','holderName','dob','email','mobile','idNo','aadhar'],
@@ -152,7 +152,8 @@ function goStep(n) {
   if (termsBar) termsBar.classList.toggle('show', n === TOTAL);
   if (ctr) ctr.textContent = `Step ${n} of ${TOTAL}`;
 
-  if (n === TOTAL) buildSummary();
+  if (n === 4) buildSummary();
+   if (n === 5) updateStep5Details();
   curStep = n;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -202,6 +203,7 @@ function buildSummary() {
     ['Aadhar', g('aadhar')], ['Pin Code', g('pincode')],
     ['City', g('city')], ['Address', g('address')],
     ['Category', g('category')], ['Annual Income', gsel('annualIncome')],
+    ['Payment ID', g('utrNo')],
   ];
   const grid = document.getElementById('summaryGrid');
   if (grid) grid.innerHTML = rows.map(([l, v]) =>
@@ -232,6 +234,7 @@ function collectData() {
     country:      'India',
     address:      g('address'),
     category:     g('category'),
+    utrNo:     g('utrNo'),
     annualIncome: el?.options[el.selectedIndex]?.text || '',
     amount:       g('applyFor') === 'EWS' ? '500' : '1000',
     submittedAt:  new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
@@ -265,6 +268,8 @@ async function sendEmail(d) {
 async function sendToSheet(d) {
 
   const fd = new FormData();
+  console.log(d)
+
 
   Object.keys(d).forEach(key => {
     fd.append(key, d[key]);
@@ -301,6 +306,13 @@ async function sendToSheet(d) {
 
 async function submitForm() {
 
+
+  const utrNo = document.getElementById('utrNo').value.trim();
+if (!utrNo) {
+    Toast.error('Please enter Payment ID (UTR No.)');
+    return;
+}
+
   if (!document.getElementById('terms')?.checked) {
     Toast.error('Please accept Terms & Conditions');
     return;
@@ -312,7 +324,7 @@ async function submitForm() {
   btn.classList.add('loading');
 
   const data = collectData();
-
+  
   try {
 
     await sendToSheet(data);
@@ -323,8 +335,7 @@ async function submitForm() {
 
     setTimeout(() => {
 
-      window.location.href =
-      `payment.html?order=${data.orderId}&amount=${data.amount}&name=${encodeURIComponent(data.holderName)}&scheme=${encodeURIComponent(data.applyFor)}`;
+     
 
     }, 1500);
 
@@ -426,7 +437,7 @@ function initPayment() {
   }
 
   // Confirm button
-  const confirmBtn = document.getElementById('btnConfirm');
+  const confirmBtn = document.getElementById('btnSubmit');
   if (confirmBtn) {
     confirmBtn.addEventListener('click', () => {
       const oid2 = document.getElementById('modalOrderId');
@@ -458,6 +469,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // Init payment if on payment page
   if (document.getElementById('displayOrderId')) initPayment();
 });
+
+
+
+
+// Function to update Step 5 details based on Step 1 selection
+function updateStep5Details() {
+  const schemeSelector = document.getElementById('applyFor');
+  const displayScheme = document.getElementById('displayScheme');
+  const displayAmount = document.getElementById('displayAmount');
+
+  // Get the selected scheme
+  const selectedScheme = schemeSelector.value;
+
+  // Determine the amount based on the selected scheme
+  let amount = 0;
+  if (selectedScheme === 'EWS') {
+      amount = 500;
+  } else if (selectedScheme === 'LIG') {
+      amount = 1000;
+  }
+
+  // Update the placeholders in Step 5
+  displayScheme.textContent = selectedScheme;
+  displayAmount.textContent = `₹ ${amount}`;
+}
+
+// Add an event listener to the dropdown to update Step 5 when the value changes
+document.getElementById('schemeSelector').addEventListener('change', updateStep5Details);
 
 /*
 ════════════════════════════════════════════════════
