@@ -436,6 +436,14 @@ async function downloadApplicationPDF(data) {
 
   });
 
+  // FOOTER LINE
+  doc.line(14, 260, 195, 260);
+
+  // FOOTER LEFT
+  doc.setFont(undefined, 'normal');
+  doc.setFontSize(11);
+  doc.text("Applicant Signature", 14, 270);
+
   // Save PDF
   doc.save(`${data.orderId}_Application.pdf`);
 }
