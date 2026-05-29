@@ -340,6 +340,18 @@ async function submitForm() {
     // Open Modal
     document.getElementById('successModal').classList.add('open');
 
+    // PDF Download Button
+    document.getElementById('downloadPdfBtn').onclick = async () => {
+
+      await downloadApplicationPDF(data);
+    
+      // Redirect to home page after download
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1000);
+    
+    };
+
   } catch(err) {
 
     console.error(err);
@@ -350,6 +362,84 @@ async function submitForm() {
     btn.classList.remove('loading');
   }
 }
+
+
+/* ══════════════════════════════════════════════
+   DOWNLOAD APPLICATION PDF
+══════════════════════════════════════════════ */
+
+async function downloadApplicationPDF(data) {
+
+  // Load jsPDF from CDN dynamically
+  if (!window.jspdf) {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    document.body.appendChild(script);
+
+    await new Promise(resolve => {
+      script.onload = resolve;
+    });
+  }
+
+  const { jsPDF } = window.jspdf;
+
+  const doc = new jsPDF();
+
+  // Header
+  doc.setFontSize(20);
+  doc.text('City Home Mansukh Miracle - EWS/LIG Application Form', 20, 20);
+
+  doc.setFontSize(12);
+
+  let y = 40;
+
+  const rows = [
+    ['Order ID', data.orderId],
+    ['Apply For', data.applyFor],
+    ['Holder Name', data.holderName],
+    ['Gender', data.gender],
+    ['Date of Birth', data.dob],
+    ['Email', data.email],
+    ['Mobile', data.mobile],
+    ['Relation', data.relation],
+    ['Father/Husband Name', data.fatherName],
+    ['ID Type', data.idType],
+    ['ID Number', data.idNo],
+    ['Aadhar Number', data.aadhar],
+    ['Pincode', data.pincode],
+    ['City', data.city],
+    ['State', data.state],
+    ['Country', data.country],
+    ['Address', data.address],
+    ['Category', data.category],
+    ['Annual Income', data.annualIncome],
+    ['Payment ID (UTR)', data.utrNo],
+    ['Amount Paid', data.amount],
+    ['Submitted At', data.submittedAt]
+  ];
+
+  rows.forEach(row => {
+
+    doc.setFont(undefined, 'bold');
+    doc.text(`${row[0]} :`, 20, y);
+
+    doc.setFont(undefined, 'normal');
+    doc.text(String(row[1] || '-'), 80, y);
+
+    y += 10;
+
+    // Add new page if content exceeds page
+    if (y > 270) {
+      doc.addPage();
+      y = 20;
+    }
+
+  });
+
+  // Save PDF
+  doc.save(`${data.orderId}_Application.pdf`);
+}
+
 
 
 // async function submitForm() {

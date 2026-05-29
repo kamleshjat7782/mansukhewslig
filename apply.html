@@ -206,11 +206,11 @@
           <label class="field-lbl">Annual Income <span class="req">*</span></label>
           <select class="field-select" id="annualIncome">
             <option value="">-- SELECT Annual Income --</option>
-            <option value="below_1_lakh">Below ₹1 Lakh</option>
-            <option value="1_to_3_lakh">₹1 Lakh – ₹3 Lakh</option>
-            <option value="3_to_6_lakh">₹3 Lakh – ₹6 Lakh</option>
-            <option value="6_to_10_lakh">₹6 Lakh – ₹10 Lakh</option>
-            <option value="above_10_lakh">Above ₹10 Lakh</option>
+            <option value="below_1_lakh">Below 1 Lakh</option>
+            <option value="1_to_3_lakh">1 Lakh – 3 Lakh</option>
+            <option value="3_to_6_lakh">3 Lakh – 6 Lakh</option>
+            <option value="6_to_10_lakh">6 Lakh – 10 Lakh</option>
+            <option value="above_10_lakh">Above 10 Lakh</option>
           </select>
         </div>
       </div>
@@ -325,7 +325,7 @@
 
         <div class="field" style="padding: 10px;">
           <label class="field-lbl">Payment ID (Reference no.) <span class="req">*</span></label>
-          <input type="text" class="field-input" id="utrNo" placeholder="payment Reference no." maxlength="10" >
+          <input type="text" class="field-input" id="utrNo" placeholder="payment Reference no." maxlength="15" >
         </div>
        
       
@@ -373,7 +373,9 @@
     <h2>Application Submitted!</h2>
     <div class="modal-order" id="modalOrderId">GR—</div>
     <p>Thank you, <strong id="modalName"></strong>! Your application has been received. Our team will contact you within 24–48 hours after verifying your payment.</p>
-    <a href="index.html" class="btn btn-gold">Back to Home</a>
+    <button class="btn btn-gold" id="downloadPdfBtn">
+      Download Application PDF
+    </button>
   </div>
 </div>
 
