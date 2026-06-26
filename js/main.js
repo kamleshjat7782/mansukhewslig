@@ -642,7 +642,193 @@ function updateStep5Details() {
 }
 
 // Add an event listener to the dropdown to update Step 5 when the value changes
-document.getElementById('schemeSelector').addEventListener('change', updateStep5Details);
+// document.getElementById('schemeSelector').addEventListener('change', updateStep5Details);
+
+
+// list 
+
+/* ======================================================
+   APPLICATION LIST PAGE
+====================================================== */
+const API_URL ="https://script.google.com/macros/s/AKfycbz8P9gSUHSf3NLXQMQA55sZZNLeJS771wG6bW6mwUNPPoQiHyDt-rmcnNpN9V0jHY2nDg/exec";
+
+let applicants = [];
+
+async function loadApplicants() {
+
+    try {
+
+        const response = await fetch(API_URL);
+
+        applicants = await response.json();
+
+        populateCategories();
+
+        renderTable(applicants);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+}
+
+function populateCategories() {
+
+    const categoryFilter =
+    document.getElementById("categoryFilter");
+
+    if (!categoryFilter) return;
+
+    const categories =
+    [...new Set(applicants.map(a => a.category))];
+
+    categoryFilter.innerHTML =
+    `<option value="">All Categories</option>`;
+
+    categories.forEach(cat => {
+
+        categoryFilter.innerHTML +=
+        `<option value="${cat}">
+            ${cat}
+        </option>`;
+    });
+}
+
+function renderTable(data) {
+
+    const tableBody =
+    document.getElementById("tableBody");
+
+    const resultCount =
+    document.getElementById("resultCount");
+
+    if (!tableBody) return;
+
+    tableBody.innerHTML = "";
+
+    resultCount.textContent =
+    `${data.length} Applications`;
+
+    data.forEach(item => {
+
+        const statusClass =
+        item.status.toLowerCase().includes("approve")
+        ? "approve"
+        : "reject";
+
+        tableBody.innerHTML += `
+        <tr>
+
+            <td>${item.applyFor}</td>
+
+            <td>${item.formNo}</td>
+
+            <td>${item.category}</td>
+
+            <td>
+                <strong>${item.name}</strong><br>
+                <small>
+                Father/Husband Name:
+                ${item.father || "-"}
+                </small>
+            </td>
+
+            <td>
+                <span class="${statusClass}">
+                ${item.status}
+                </span>
+            </td>
+
+            <td>${item.rejectReason || "-"}</td>
+
+        </tr>
+        `;
+    });
+}
+
+function searchApplicants() {
+
+    const category =
+    document.getElementById("categoryFilter")
+    .value
+    .toLowerCase();
+
+    const name =
+    document.getElementById("nameSearch")
+    .value
+    .toLowerCase();
+
+    const filtered =
+    applicants.filter(item => {
+
+        const matchCategory =
+        !category ||
+        item.category.toLowerCase() === category;
+
+        const matchName =
+        !name ||
+        item.name.toLowerCase().includes(name);
+
+        return matchCategory && matchName;
+    });
+
+    renderTable(filtered);
+}
+
+document.addEventListener(
+"DOMContentLoaded",
+() => {
+
+    loadApplicants();
+
+    document
+    .getElementById("searchBtn")
+    ?.addEventListener(
+        "click",
+        searchApplicants
+    );
+
+    document
+    .getElementById("categoryFilter")
+    ?.addEventListener(
+        "change",
+        searchApplicants
+    );
+});
+
+async function loadApplicants() {
+
+  document
+      .getElementById("loader")
+      .classList.remove("hide-loader");
+
+  try {
+
+      const response = await fetch(API_URL);
+      applicants = await response.json();
+
+      populateCategories();
+      renderTable(applicants);
+
+  } catch(error) {
+
+      console.error(error);
+
+  } finally {
+
+      document
+          .getElementById("loader")
+          .classList.add("hide-loader");
+  }
+}
+
+// page loder 
+document.addEventListener(
+  "DOMContentLoaded",
+  loadApplicants
+);
+
 
 /*
 ════════════════════════════════════════════════════

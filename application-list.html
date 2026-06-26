@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Application List | Mansukh Group</title>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- ── NAVBAR ── -->
+<nav class="navbar">
+  
+    
+    <a class="nav-logo" href="index.html">
+      <img src="/Images/white logo.png" alt="Mansukh Group Logo" class="nav-logo-img">
+    </a>
+    
+ 
+  <div class="nav-links">
+    <a href="#who-we-are">Who We Are</a>
+    <a href="#scheme">Scheme</a>
+    <a href="#fees">Fees</a>
+    <a href="about.html">About</a>
+    <a href="tel:919782753728">📞 +91 9782753728</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="application-list.html" class="btn btn-gold btn-sm">application-list</a>
+    <button class="nav-hamburger" id="navHamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="#who-we-are">Who We Are</a>
+  <a href="#scheme">Scheme</a>
+  <a href="#fees">Fees</a>
+  <a href="about.html">About</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy Policy</a>
+  <!-- <a href="apply.html" class="drawer-cta">Apply Now →</a> -->
+</div>
+<section class="app-list-page">
+
+    <div class="container">
+
+        <div class="page-header">
+            <h1>Application Status List</h1>
+            <p>Search Applicant By Category Or Name</p>
+        </div>
+
+        <!-- Search Area -->
+
+        <div class="search-card">
+
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+            </select>
+        
+            <input
+                type="text"
+                id="nameSearch"
+                placeholder="Search By Name"
+            >
+        
+            <button id="searchBtn">
+                Search
+            </button>
+        
+        </div>
+        
+        <div class="category-bar">
+        
+            <span id="categoryHeading">
+                All Categories
+            </span>
+        
+            <span id="resultCount">
+                0 Applications
+            </span>
+        
+        </div>
+       
+        
+        <div class="table-wrapper">
+        
+            <table>
+        
+                <thead>
+                    <tr>
+                        <th>Apply For</th>
+                        <th>Form No</th>
+                        <th>Category</th>
+                        <th>Customer Details</th>
+                        <th>Status</th>
+                        <th>Reject Reason</th>
+                    </tr>
+                </thead>
+        
+                <tbody id="tableBody"></tbody>
+        
+            </table>
+        
+        </div>
+
+        <div id="loader" class="loader-container">
+            <div class="loader"></div>
+            <p>Loading Applications...</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+    <div class="footer-main">
+      <div>
+        <div class="footer-logo">
+          <a class="nav-logo" href="index.html">
+            <div class="nav-logo-icon">G</div>
+            <div><span class="nav-logo-top">Mansukh</span><span class="nav-logo-bot">Group</span></div>
+          </a>
+        </div>
+        <p class="footer-desc"> Mansukh Group Project  — affordable EWS &amp; LIG housing in Jaipur, Rajasthan. Rajasthan's JDA and RERA approved  gated township.</p>
+        <div class="footer-contact-row">📍 <span>1 floor, Plot no.5-C, Shree Gilab Tower, Nirman Nagar A B, DCM, Jaipur-302019</span></div>
+        <div class="footer-contact-row">📞 <a href="tel:1234567890">9782753728</a> <span>(10 AM – 5 PM)</span></div>
+        <div class="footer-contact-row">📧 <a href="mailto:info@Mansukhewslig.in">info@Mansukhewslig.in</a></div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Quick Links</div>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="apply.html">Apply Now</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="/Images/EWS_Book_City Home Mansukh Miracle.pdf" target="_blank" rel="noopener noreferrer">Scheme Booklet</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <div class="footer-rera">
+          <div class="footer-rera-lbl">RERA Registration</div>
+          <div class="footer-rera-val">RAJ/P/2025/4211</div>
+          <div class="footer-rera-bank">DD in favour of name : MANSUKH BUILDERS AND DEVELOPER LLP CITY HOME MANSUKH MIRACLE PROMOTER'S ACCOUNT
+            
+             <br/>Bank: ICICI Bank<br>A/C: 777705102171</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Mansukh Group. All Rights Reserved.</p>
+      <div class="footer-mansukh">
+        <span>Promoted by</span>
+        <strong>MANSUKH GROUP</strong>
+        <span>RAJ/P/2025/4211</span>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/main.js"></script>
+
+</body>
+</html>
