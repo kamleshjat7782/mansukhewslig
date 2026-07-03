@@ -830,6 +830,27 @@ document.addEventListener(
 );
 
 
+function closeLotteryPopup() {
+  document.getElementById("lotteryPopup").style.display = "none";
+} 
+
+window.addEventListener("load", () => {
+
+  if(localStorage.getItem("lotteryPopupClosed")){
+      document.getElementById("lotteryPopup").style.display = "none";
+  }
+
+});
+
+function closeLotteryPopup(){
+
+  document.getElementById("lotteryPopup").style.display = "none";
+
+  localStorage.setItem(
+      "lotteryPopupClosed",
+      "yes"
+  );
+}
 /*
 ════════════════════════════════════════════════════
   SETUP GUIDES
