@@ -775,21 +775,21 @@ th,td{
 
 }
 
-
 .approve{
-  background:#28a745;
+  background:#16a34a;
   color:#fff;
-  padding:8px 15px;
-  border-radius:4px;
+  padding:8px 14px;
+  border-radius:6px;
+  font-weight:600;
 }
 
 .reject{
-  background:#dc3545;
+  background:#dc2626;
   color:#fff;
-  padding:8px 15px;
-  border-radius:4px;
+  padding:8px 14px;
+  border-radius:6px;
+  font-weight:600;
 }
-
 
 .loader-container{
   text-align:center;
@@ -1204,4 +1204,135 @@ th,td{
   .table-wrapper table{
       min-width:700px;
   }
+}
+
+
+/* result responsive code 
+ */
+
+
+
+
+ /* ==========================
+   MOBILE RESPONSIVE
+========================== */
+
+@media (max-width: 768px) {
+
+  .container{
+      width: 95%;
+      padding: 0 10px;
+  }
+
+  .page-header h1{
+      font-size: 38px;
+      text-align: center;
+  }
+
+  .page-header p{
+      text-align: center;
+      font-size: 16px;
+  }
+
+  /* Search Box */
+  .search-card{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+  }
+
+  .search-card input,
+  .search-card select,
+  .search-card button{
+      width: 100%;
+  }
+
+  #searchBtn{
+      height: 50px;
+  }
+
+  /* Result Bar */
+  .category-bar{
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      padding: 15px;
+  }
+
+  /* Table Scroll */
+  .table-wrapper{
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+  }
+
+  table{
+      min-width: 800px;
+  }
+
+  /* PDF Button */
+  .pdf-btn{
+      width: 100%;
+      text-align: center;
+  }
+
+  /* Result Card */
+  .result-card{
+      padding: 15px;
+  }
+
+  .result-card h3{
+      font-size: 20px;
+  }
+
+  /* Navbar */
+  .nav-links{
+      display: none;
+  }
+
+  .nav-hamburger{
+      display: flex;
+  }
+}
+
+/* Small Mobile */
+
+@media (max-width: 480px){
+
+  .page-header h1{
+      font-size: 32px;
+  }
+
+  .page-header p{
+      font-size: 14px;
+  }
+
+  .search-card{
+      gap: 10px;
+  }
+
+  .search-card input,
+  .search-card select{
+      height: 50px;
+      font-size: 15px;
+  }
+
+  #searchBtn{
+      font-size: 15px;
+  }
+
+  .category-bar{
+      font-size: 14px;
+  }
+}
+
+
+
+
+.table-wrapper{
+  width:100%;
+  overflow-x:auto;
+}
+
+table{
+  min-width:900px;
 }

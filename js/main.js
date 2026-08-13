@@ -663,7 +663,7 @@ async function loadApplicants() {
         const response = await fetch(API_URL);
 
         applicants = await response.json();
-        console.log(applicants);
+        // console.log(applicants);
 
         document.getElementById("loader").style.display = "none";
 
@@ -700,10 +700,10 @@ function renderTable(data) {
     data.forEach(item => {
 
         const statusClass =
-            item.status &&
-            item.status.toLowerCase().includes("allotted")
-                ? "approve"
-                : "reject";
+item.status &&
+item.status.toLowerCase().trim() === "not allotted"
+    ? "reject"
+    : "approve";
 
         tableBody.innerHTML += `
         <tr>
