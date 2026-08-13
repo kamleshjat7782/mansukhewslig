@@ -944,3 +944,264 @@ th,td{
   }
 
 }
+
+/* result page  */
+
+/* ===========================
+   LOTTERY RESULT PAGE
+=========================== */
+
+.app-list-page {
+  padding: 80px 0;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
+.app-list-page .container {
+  width: 95%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.page-header h1 {
+  font-size: 42px;
+  color: #0a1f44;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  color: #666;
+  font-size: 17px;
+}
+
+/* ===========================
+ PDF BUTTON
+=========================== */
+
+.btn-gold {
+  background: #d4af37;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: .3s;
+}
+
+.btn-gold:hover {
+  background: #b8952f;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+ SEARCH CARD
+=========================== */
+
+.search-card {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.search-card input {
+  flex: 1;
+  min-width: 280px;
+  height: 58px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 0 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-card input:focus {
+  border-color: #d4af37;
+}
+
+.search-card button {
+  min-width: 180px;
+  border: none;
+  background: #d4af37;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.search-card button:hover {
+  background: #b8952f;
+}
+
+/* ===========================
+ RESULT BAR
+=========================== */
+
+.category-bar {
+  background: #071d49;
+  color: #fff;
+  padding: 18px 25px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-bar span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ===========================
+ TABLE
+=========================== */
+
+.table-wrapper {
+  background: #fff;
+  border-radius: 15px;
+  overflow-x: auto;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-wrapper thead {
+  background: linear-gradient(
+      90deg,
+      #071d49,
+      #1f3361
+  );
+}
+
+.table-wrapper th {
+  color: #fff;
+  padding: 18px;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.table-wrapper td {
+  padding: 18px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+
+.table-wrapper tr:hover {
+  background: #fafafa;
+}
+
+/* ===========================
+ STATUS BADGE
+=========================== */
+
+.approve {
+  background: #1db954;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.reject {
+  background: #e53935;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ===========================
+ LOADER
+=========================== */
+
+.loader-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.loader {
+  width: 55px;
+  height: 55px;
+  border: 5px solid #ddd;
+  border-top: 5px solid #d4af37;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-container p {
+  margin-top: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+@keyframes spin {
+  100% {
+      transform: rotate(360deg);
+  }
+}
+
+/* ===========================
+ NO RECORD
+=========================== */
+
+.no-record {
+  padding: 40px;
+  text-align: center;
+  color: #888;
+  font-size: 18px;
+}
+
+/* ===========================
+ MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+  .page-header h1{
+      font-size:32px;
+  }
+
+  .search-card{
+      flex-direction:column;
+  }
+
+  .search-card input,
+  .search-card button{
+      width:100%;
+  }
+
+  .category-bar{
+      flex-direction:column;
+      gap:10px;
+      text-align:center;
+  }
+
+  .table-wrapper{
+      overflow-x:auto;
+  }
+
+  .table-wrapper table{
+      min-width:700px;
+  }
+}

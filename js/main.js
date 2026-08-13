@@ -658,64 +658,52 @@ async function loadApplicants() {
 
     try {
 
+        document.getElementById("loader").style.display = "flex";
+
         const response = await fetch(API_URL);
 
         applicants = await response.json();
+        console.log(applicants);
 
-        populateCategories();
-
-        renderTable(applicants);
+        document.getElementById("loader").style.display = "none";
 
     } catch (error) {
 
         console.error(error);
 
+        document.getElementById("loader").style.display = "none";
     }
-}
-
-function populateCategories() {
-
-    const categoryFilter =
-    document.getElementById("categoryFilter");
-
-    if (!categoryFilter) return;
-
-    const categories =
-    [...new Set(applicants.map(a => a.category))];
-
-    categoryFilter.innerHTML =
-    `<option value="">All Categories</option>`;
-
-    categories.forEach(cat => {
-
-        categoryFilter.innerHTML +=
-        `<option value="${cat}">
-            ${cat}
-        </option>`;
-    });
 }
 
 function renderTable(data) {
 
-    const tableBody =
-    document.getElementById("tableBody");
-
-    const resultCount =
-    document.getElementById("resultCount");
-
-    if (!tableBody) return;
+    const tableBody = document.getElementById("tableBody");
 
     tableBody.innerHTML = "";
 
-    resultCount.textContent =
-    `${data.length} Applications`;
+    document.getElementById("resultCount").innerText =
+        data.length + " Record";
+
+    if (data.length === 0) {
+
+        tableBody.innerHTML = `
+        <tr>
+            <td colspan="6" style="text-align:center;padding:25px;">
+                No Record Found
+            </td>
+        </tr>
+        `;
+
+        return;
+    }
 
     data.forEach(item => {
 
         const statusClass =
-        item.status.toLowerCase().includes("approve")
-        ? "approve"
-        : "reject";
+            item.status &&
+            item.status.toLowerCase().includes("allotted")
+                ? "approve"
+                : "reject";
 
         tableBody.innerHTML += `
         <tr>
@@ -726,21 +714,15 @@ function renderTable(data) {
 
             <td>${item.category}</td>
 
-            <td>
-                <strong>${item.name}</strong><br>
-                <small>
-                Father/Husband Name:
-                ${item.father || "-"}
-                </small>
-            </td>
+            <td>${item.name}</td>
+
+            <td>${item.father}</td>
 
             <td>
                 <span class="${statusClass}">
-                ${item.status}
+                    ${item.status}
                 </span>
             </td>
-
-            <td>${item.rejectReason || "-"}</td>
 
         </tr>
         `;
@@ -749,79 +731,51 @@ function renderTable(data) {
 
 function searchApplicants() {
 
-    const category =
-    document.getElementById("categoryFilter")
-    .value
-    .toLowerCase();
+    const mobile =
+        document.getElementById("mobileSearch")
+        .value
+        .trim();
 
-    const name =
-    document.getElementById("nameSearch")
-    .value
-    .toLowerCase();
+    const aadhaar =
+        document.getElementById("aadhaarSearch")
+        .value
+        .trim();
 
-    const filtered =
-    applicants.filter(item => {
+    if (!mobile && !aadhaar) {
 
-        const matchCategory =
-        !category ||
-        item.category.toLowerCase() === category;
+        alert(
+            "Please Enter Mobile Number Or Aadhaar Number"
+        );
 
-        const matchName =
-        !name ||
-        item.name.toLowerCase().includes(name);
+        return;
+    }
 
-        return matchCategory && matchName;
+    const filtered = applicants.filter(item => {
+
+        const mobileMatch =
+            mobile &&
+            item.mobile &&
+            item.mobile.includes(mobile);
+
+        const aadhaarMatch =
+            aadhaar &&
+            item.aadhaar &&
+            item.aadhaar.includes(aadhaar);
+
+        return mobileMatch || aadhaarMatch;
     });
 
     renderTable(filtered);
 }
 
-document.addEventListener(
-"DOMContentLoaded",
-() => {
+document.addEventListener("DOMContentLoaded", () => {
 
     loadApplicants();
 
     document
-    .getElementById("searchBtn")
-    ?.addEventListener(
-        "click",
-        searchApplicants
-    );
-
-    document
-    .getElementById("categoryFilter")
-    ?.addEventListener(
-        "change",
-        searchApplicants
-    );
+        .getElementById("searchBtn")
+        .addEventListener("click", searchApplicants);
 });
-
-async function loadApplicants() {
-
-  document
-      .getElementById("loader")
-      .classList.remove("hide-loader");
-
-  try {
-
-      const response = await fetch(API_URL);
-      applicants = await response.json();
-
-      populateCategories();
-      renderTable(applicants);
-
-  } catch(error) {
-
-      console.error(error);
-
-  } finally {
-
-      document
-          .getElementById("loader")
-          .classList.add("hide-loader");
-  }
-}
 
 // page loder 
 document.addEventListener(

@@ -41,76 +41,116 @@
 </div>
 <section class="app-list-page">
 
-    <div class="container">
+  <div class="container">
 
-        <div class="page-header">
-            <h1>Application Status List</h1>
-            <p>Search Applicant By Category Or Name</p>
-        </div>
+      <div class="page-header">
+          <h1>Lottery Result</h1>
+          <p>
+              Enter Mobile Number Or Aadhaar Number To Check Your Result
+          </p>
+      </div>
 
-        <!-- Search Area -->
+      <!-- PDF DOWNLOAD -->
 
-        <div class="search-card">
+      <div style="text-align:center;margin-bottom:30px;">
 
-            <select id="categoryFilter">
-                <option value="">All Categories</option>
-            </select>
-        
-            <input
-                type="text"
-                id="nameSearch"
-                placeholder="Search By Name"
-            >
-        
-            <button id="searchBtn">
-                Search
-            </button>
-        
-        </div>
-        
-        <div class="category-bar">
-        
-            <span id="categoryHeading">
-                All Categories
-            </span>
-        
-            <span id="resultCount">
-                0 Applications
-            </span>
-        
-        </div>
-       
-        
-        <div class="table-wrapper">
-        
-            <table>
-        
-                <thead>
-                    <tr>
-                        <th>Apply For</th>
-                        <th>Form No</th>
-                        <th>Category</th>
-                        <th>Customer Details</th>
-                        <th>Status</th>
-                        <th>Reject Reason</th>
-                    </tr>
-                </thead>
-        
-                <tbody id="tableBody"></tbody>
-        
-            </table>
-        
-        </div>
+          <a href="pdf/lottery-result.pdf"
+             target="_blank"
+             class="btn btn-gold">
 
-        <div id="loader" class="loader-container">
-            <div class="loader"></div>
-            <p>Loading Applications...</p>
-        </div>
+             Download Complete Lottery Result PDF
 
-    </div>
+          </a>
+
+      </div>
+
+      <!-- SEARCH -->
+
+      <div class="search-card">
+
+          <input
+              type="text"
+              id="mobileSearch"
+              placeholder="Enter Mobile Number"
+          >
+
+          <input
+              type="text"
+              id="aadhaarSearch"
+              placeholder="Enter Aadhaar Number"
+          >
+
+          <button id="searchBtn">
+              Check Result
+          </button>
+
+      </div>
+
+      <!-- RESULT BAR -->
+
+      <div class="category-bar">
+
+          <span>
+              Search Result
+          </span>
+
+          <span id="resultCount">
+              0 Record
+          </span>
+
+      </div>
+
+      <!-- TABLE -->
+
+      <div class="table-wrapper">
+
+          <table>
+
+              <thead>
+
+                  <tr>
+                      <th>Apply For</th>
+                      <th>Form No</th>
+                      <th>Category</th>
+                      <th>Applicant Name</th>
+                      <th>Father/Husband Name</th>
+                      <th>Status</th>
+                  </tr>
+
+              </thead>
+
+              <tbody id="tableBody">
+
+                  <tr>
+
+                      <td colspan="6" style="padding:30px;text-align:center;">
+
+                          Please Enter Mobile Number Or Aadhaar Number
+                          To Check Result
+
+                      </td>
+
+                  </tr>
+
+              </tbody>
+
+          </table>
+
+      </div>
+
+      <!-- LOADER -->
+
+      <div id="loader" class="loader-container">
+
+          <div class="loader"></div>
+
+          <p>Loading Result...</p>
+
+      </div>
+
+  </div>
 
 </section>
-
 <!-- ══════════ FOOTER ══════════ -->
 <footer class="footer">
     <div class="footer-main">
